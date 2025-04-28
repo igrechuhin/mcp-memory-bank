@@ -52,6 +52,26 @@ Add this to your mcp.json config file:
 }
 ```
 
+### With Docker
+
+Add this to your mcp.json config file:
+
+```json
+{
+  "mcpServers": {
+    "memory-bank": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp-memory-bank"
+      ]
+    }
+  }
+}
+```
+
 ### Manually
 
 Run the following commands:
