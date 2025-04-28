@@ -14,4 +14,4 @@ RUN pip install --upgrade pip \
     && pip install --no-cache-dir .
 
 # Run the MCP server
-CMD ["python", "-m", "server"]
+CMD ["python", "server.py"]
