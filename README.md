@@ -1,20 +1,12 @@
-# MCP Setup Helper
+# Memory Bank
 
-This MCP server helps users set up and configure their AI assistant environments with three key components:
+This MCP server provides a structured documentation system for context preservation in AI assistant environments.
 
-1. **Memory Bank** - A structured documentation system for context preservation (Currently Implemented)
-2. **MCP Servers** - MCP servers recommender for extending AI capabilities (In progress)
-3. **Rules** - Rules recommendations based on tech stack and project features (In progress)
-
-## Current Features (Memory Bank)
+## Features
 
 - Get detailed information about Memory Bank structure
 - Generate templates for Memory Bank files
-- Analyze project summaries and provide suggestions for Memory Bank content
-- Access guides on Memory Bank setup and usage
-
-### MCP Servers Recommender & Setup (In Progress)
-### Rules Recommender (In Progress)
+- Analyze project and provide suggestions for Memory Bank content
 
 ## Running the Server
 
