@@ -1,179 +1,35 @@
 from mcp.server.fastmcp import FastMCP
-from starlette.applications import Starlette
-from starlette.responses import HTMLResponse
-from mcp.server.sse import SseServerTransport
-from starlette.requests import Request
-from starlette.routing import Mount, Route
-from mcp.server import Server
 
-# Initialize FastMCP server with a name
+from templates.memory_bank_instructions import TEMPLATE as MEMORY_BANK_INSTRUCTIONS_TEMPLATE
+from templates.projectbrief import TEMPLATE as PROJECTBRIEF_TEMPLATE
+from templates.product_context import TEMPLATE as PRODUCT_CONTEXT_TEMPLATE
+from templates.active_context import TEMPLATE as ACTIVE_CONTEXT_TEMPLATE
+from templates.system_patterns import TEMPLATE as SYSTEM_PATTERNS_TEMPLATE
+from templates.tech_context import TEMPLATE as TECH_CONTEXT_TEMPLATE
+from templates.progress import TEMPLATE as PROGRESS_TEMPLATE
+
+from guides.setup import GUIDE as SETUP_GUIDE
+from guides.usage import GUIDE as USAGE_GUIDE
+from guides.benefits import GUIDE as BENEFITS_GUIDE
+from guides.structure import GUIDE as STRUCTURE_GUIDE
+
 mcp = FastMCP("memory-bank-helper")
 
-# Templates for Memory Bank files
 TEMPLATES = {
-    "projectbrief.md": """# Project Brief: [Project Name]
-
-## Overview
-[High-level overview of what you're building]
-
-## Core Requirements
-- [Requirement 1]
-- [Requirement 2]
-- [Requirement 3]
-
-## Goals
-- [Goal 1]
-- [Goal 2]
-- [Goal 3]
-
-## Project Scope
-[Define what is in and out of scope for this project]""",
-
-    "productContext.md": """# Product Context: [Project Name]
-
-## Problem Statement
-[Describe the problem this project solves]
-
-## User Experience Goals
-- [UX Goal 1]
-- [UX Goal 2]
-- [UX Goal 3]
-
-## Success Metrics
-- [Metric 1]
-- [Metric 2]
-- [Metric 3]""",
-
-    "activeContext.md": """# Active Context: [Project Name]
-
-## Current Work Focus
-[Describe what you're currently working on]
-
-## Recent Changes
-- [Change 1]
-- [Change 2]
-- [Change 3]
-
-## Next Steps
-- [Step 1]
-- [Step 2]
-- [Step 3]
-
-## Active Decisions and Considerations
-[Document decisions being made and factors being considered]
-
-## Important Patterns and Preferences
-[Document patterns that are emerging in the project]
-
-## Learnings and Project Insights
-[Document what you've learned so far]""",
-
-    "systemPatterns.md": """# System Patterns: [Project Name]
-
-## System Architecture
-[Describe the overall architecture]
-
-## Key Technical Decisions
-- [Decision 1]
-- [Decision 2]
-- [Decision 3]
-
-## Design Patterns in Use
-- [Pattern 1]
-- [Pattern 2]
-- [Pattern 3]
-
-## Component Relationships
-[Describe how components interact]
-
-## Critical Implementation Paths
-[Describe critical paths in the implementation]""",
-
-    "techContext.md": """# Tech Context: [Project Name]
-
-## Technologies Used
-- [Technology 1]
-- [Technology 2]
-- [Technology 3]
-
-## Development Setup
-[Describe the development environment setup]
-
-## Technical Constraints
-- [Constraint 1]
-- [Constraint 2]
-- [Constraint 3]
-
-## Dependencies
-- [Dependency 1]
-- [Dependency 2]
-- [Dependency 3]
-
-## Tool Usage Patterns
-[Describe how tools are used in the project]""",
-
-    "progress.md": """# Progress: [Project Name]
-
-## What Works
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
-
-## What's Left to Build
-- [Feature 4]
-- [Feature 5]
-- [Feature 6]
-
-## Known Issues and Limitations
-- [Issue 1]
-- [Issue 2]
-- [Issue 3]
-
-## Evolution of Project Decisions
-[Document how project decisions have evolved]"""
+    "memory_bank_instructions.md": MEMORY_BANK_INSTRUCTIONS_TEMPLATE,
+    "projectbrief.md": PROJECTBRIEF_TEMPLATE,
+    "productContext.md": PRODUCT_CONTEXT_TEMPLATE,
+    "activeContext.md": ACTIVE_CONTEXT_TEMPLATE,
+    "systemPatterns.md": SYSTEM_PATTERNS_TEMPLATE,
+    "techContext.md": TECH_CONTEXT_TEMPLATE,
+    "progress.md": PROGRESS_TEMPLATE
 }
 
-# Guide content for Memory Bank
 GUIDES = {
-    "setup": """## Setting Up Memory Bank
-
-1. Create a 'memory-bank/' directory in your project
-2. Create the core files using our templates
-3. Fill in the details based on your project
-4. Update regularly as your project evolves
-
-The Memory Bank is a living documentation system that helps maintain context across sessions.""",
-
-    "usage": """## Using Memory Bank
-
-Memory Bank updates occur when:
-1. Discovering new project patterns
-2. After implementing significant changes
-3. When user requests with **update memory bank** (MUST review ALL files)
-4. When context needs clarification
-
-Remember: After every memory reset, begin by reading the Memory Bank files to rebuild context.""",
-
-    "benefits": """## Benefits of Memory Bank
-
-- **Context Preservation**: Maintain project knowledge across sessions
-- **Consistent Development**: Experience predictable interactions
-- **Self-Documenting Projects**: Create valuable project documentation as a side effect
-- **Scalable to Any Project**: Works with projects of any size or complexity
-- **Technology Agnostic**: Functions with any tech stack or language""",
-
-    "structure": """## Memory Bank Structure
-
-The Memory Bank consists of core files and optional context files, all in Markdown format:
-
-### Core Files (Required)
-1. 'projectbrief.md' - Foundation document that shapes all other files
-2. 'productContext.md' - Explains why the project exists, problems being solved
-3. 'activeContext.md' - Current work focus, recent changes, next steps
-4. 'systemPatterns.md' - System architecture, technical decisions, design patterns
-5. 'techContext.md' - Technologies used, development setup, constraints
-6. 'progress.md' - What works, what's left to build
-"""
+    "setup": SETUP_GUIDE,
+    "usage": USAGE_GUIDE,
+    "benefits": BENEFITS_GUIDE,
+    "structure": STRUCTURE_GUIDE
 }
 
 # Define a tool to get Memory Bank structure
@@ -203,58 +59,67 @@ async def analyze_project_summary(project_summary: str) -> str:
     
     Args:
         project_summary: A summary of the project
-    """
-    # Extract potential project name (first few words)
-    words = project_summary.split()
-    potential_name = " ".join(words[:3]) if len(words) >= 3 else project_summary
+    """    # Extract potential project name (first few words)
     
     return f"""Based on your project summary, here are suggestions for your Memory Bank:
 
-## Core Memory Bank Files
+### Core Files (Required)
+1. `memory_bank_instructions.md`
+    - Instructions for the Memory Bank
+    - Describes how to use the Memory Bank
+    
+2. `projectbrief.md`
+   - Foundation document that shapes all other files
+   - Created at project start if it doesn't exist
+   - Defines core requirements and goals
+   - Source of truth for project scope
 
-1. **projectbrief.md** - The foundation document that shapes all other files
-   - Project Name: Consider "{potential_name}..." or something more descriptive
-   - Include the core purpose, requirements, goals, and scope of your project
-   - This file answers "What are we building?"
+3. `productContext.md`
+   - Why this project exists
+   - Problems it solves
+   - How it should work
+   - User experience goals
 
-2. **productContext.md** - Explains why the project exists and problems being solved
-   - Document the problem statement your project addresses
-   - Define user experience goals and success metrics
-   - This file answers "Why are we building this?"
+4. `activeContext.md`
+   - Current work focus
+   - Recent changes
+   - Next steps
+   - Active decisions and considerations
+   - Important patterns and preferences
+   - Learnings and project insights
 
-3. **activeContext.md** - Documents current work focus, recent changes, and next steps
-   - Track what you're currently working on and recent changes
-   - List upcoming tasks and priorities
-   - Document active decisions and emerging patterns
-   - This file answers "What are we working on now?"
+5. `systemPatterns.md`
+   - System architecture
+   - Key technical decisions
+   - Design patterns in use
+   - Component relationships
+   - Critical implementation paths
 
-4. **systemPatterns.md** - Describes system architecture and technical decisions
-   - Document the overall architecture and component relationships
-   - List key technical decisions and design patterns in use
-   - Outline critical implementation paths
-   - This file answers "How is it built?"
+6. `techContext.md`
+   - Technologies used
+   - Development setup
+   - Technical constraints
+   - Dependencies
+   - Tool usage patterns
 
-5. **techContext.md** - Lists technologies used, setup, and constraints
-   - Document technologies, development setup, and dependencies
-   - Note technical constraints and tool usage patterns
-   - This file answers "What technologies are we using?"
-
-6. **progress.md** - Tracks what works and what's left to build
-   - List completed features and functionality
-   - Document remaining work and known issues
-   - Track the evolution of project decisions
-   - This file answers "Where are we in the process?"
+7. `progress.md`
+   - What works
+   - What's left to build
+   - Current status
+   - Known issues
+   - Evolution of project decisions
 
 ## Files Location:
-1. If you are using Cursor IDE, create .md files in .cursor/rules directory
+1. If you are using Cursor IDE, create .mdc files in .cursor/rules directory
 2. If you are using another IDE, create .md files in directory for rules
 3. If you don't know where rules must be located, create a 'memory-bank/' directory in your project
 
 ## Next Steps:
-1. Create the core files using our templates
-2. Fill in the details based on these suggestions
-3. Update regularly as your project evolves
-4. Ensure details accurately reflect your project context and current state"""
+1. Fetch and create memory_bank_instructions.md file as is without any edits 
+2. Create the core files using our templates
+3. Fill in the details based on these suggestions
+4. Update regularly as your project evolves
+5. Ensure details accurately reflect your project context and current state"""
 
 # Add a resource for Memory Bank guide
 @mcp.resource("memory_bank_guide://{section}")
@@ -270,157 +135,6 @@ async def memory_bank_guide(section: str) -> tuple[str, str]:
     else:
         available_guides = ", ".join(GUIDES.keys())
         return f"Guide for {section} not found. Available guides: {available_guides}", "text/plain"
-
-# HTML for the homepage
-async def homepage(request: Request) -> HTMLResponse:
-    html_content = """
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Memory Bank Helper</title>
-        <style>
-            body { 
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 20px;
-                line-height: 1.6;
-                color: #333;
-            }
-            h1, h2, h3 { 
-                color: #2c3e50;
-            }
-            .card {
-                background-color: #f8f9fa;
-                border-radius: 8px;
-                padding: 20px;
-                margin-bottom: 20px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            button {
-                background-color: #3498db;
-                color: white;
-                border: none;
-                padding: 10px 15px;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 14px;
-            }
-            button:hover {
-                background-color: #2980b9;
-            }
-            .status {
-                border: 1px solid #ccc;
-                padding: 10px;
-                min-height: 20px;
-                margin-top: 10px;
-                border-radius: 4px;
-                color: #555;
-                background-color: #f5f5f5;
-            }
-            .tool-item {
-                margin-bottom: 15px;
-                padding-bottom: 15px;
-                border-bottom: 1px solid #eee;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Memory Bank Helper</h1>
-        
-        <div class="card">
-            <p>This MCP server helps you set up and maintain a Memory Bank for your projects. Memory Bank is a structured documentation system that allows AI assistants to maintain context across sessions.</p>
-            <button id="connect-button">Connect to SSE</button>
-            <div class="status" id="status">Connection status will appear here...</div>
-        </div>
-        
-        <h2>Available Tools</h2>
-        
-        <div class="tool-item">
-            <h3>get_memory_bank_structure</h3>
-            <p>Returns a detailed description of the Memory Bank file structure.</p>
-        </div>
-        
-        <div class="tool-item">
-            <h3>generate_memory_bank_template</h3>
-            <p>Returns a template for a specific Memory Bank file (e.g., "projectbrief.md").</p>
-        </div>
-        
-        <div class="tool-item">
-            <h3>analyze_project_summary</h3>
-            <p>Analyzes your project summary and provides suggestions for Memory Bank content.</p>
-        </div>
-        
-        <script>
-            document.getElementById('connect-button').addEventListener('click', function() {
-                const statusDiv = document.getElementById('status');
-                
-                try {
-                    const eventSource = new EventSource('/sse');
-                    
-                    statusDiv.textContent = 'Connecting...';
-                    
-                    eventSource.onopen = function() {
-                        statusDiv.textContent = 'Connected to SSE';
-                    };
-                    
-                    eventSource.onerror = function() {
-                        statusDiv.textContent = 'Error connecting to SSE';
-                        eventSource.close();
-                    };
-                    
-                    eventSource.onmessage = function(event) {
-                        statusDiv.textContent = 'Received: ' + event.data;
-                    };
-                    
-                    // Add a disconnect option
-                    const disconnectButton = document.createElement('button');
-                    disconnectButton.textContent = 'Disconnect';
-                    disconnectButton.addEventListener('click', function() {
-                        eventSource.close();
-                        statusDiv.textContent = 'Disconnected';
-                        this.remove();
-                    });
-                    
-                    document.body.appendChild(disconnectButton);
-                    
-                } catch (e) {
-                    statusDiv.textContent = 'Error: ' + e.message;
-                }
-            });
-        </script>
-    </body>
-    </html>
-    """
-    return HTMLResponse(html_content)
-
-# Create Starlette application with SSE transport
-def create_starlette_app(mcp_server: Server, *, debug: bool = False) -> Starlette:
-    """Create a Starlette application that can serve the provided mcp server with SSE."""
-    sse = SseServerTransport("/messages/")
-
-    async def handle_sse(request: Request) -> None:
-        async with sse.connect_sse(
-                request.scope,
-                request.receive,
-                request._send,
-        ) as (read_stream, write_stream):
-            await mcp_server.run(
-                read_stream,
-                write_stream,
-                mcp_server.create_initialization_options(),
-            )
-
-    return Starlette(
-        debug=debug,
-        routes=[
-            Route("/", endpoint=homepage),  # Add the homepage route
-            Route("/sse", endpoint=handle_sse),
-            Mount("/messages/", app=sse.handle_post_message),
-        ],
-    )
 
 if __name__ == "__main__":
     mcp.run()
