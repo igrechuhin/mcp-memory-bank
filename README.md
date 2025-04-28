@@ -1,6 +1,10 @@
+[![smithery badge](https://smithery.ai/badge/@ipospelov/mcp-memory-bank)](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
+
 # Memory Bank
 
 This MCP server provides a structured documentation system for context preservation in AI assistant environments.
+
+Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill.org)
 
 ## Features
 
@@ -10,34 +14,74 @@ This MCP server provides a structured documentation system for context preservat
 
 ## Running the Server
 
-You can run the server using the provided script:
+There are a few options to use this MCP server:
 
-```bash
-./run.sh
-```
+### With Smithery
 
-Or manually:
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python server.py
-```
-
-The server will be available at http://localhost:8080/sse.
-
-## MCP .json setup example 
+Add this to your mcp.json config file:
 
 ```json
 {
   "mcpServers": {
     "memory-bank": {
-      "url": "http://localhost:8080/sse"
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@ipospelov/mcp-memory-bank",
+        "--key",
+        "your_smithery_key"
+      ]
     }
   }
 }
 ```
+
+### With SSE
+
+Add this to your mcp.json config file:
+
+```json
+{
+  "mcpServers": {
+    "memory-bank": {
+      "url": "https://mcp-cursor-setup-enlighter.replit.app/sse"
+    }
+  }
+}
+```
+
+### Manually
+
+Run the following commands:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Then add this to your mcp.json config file:
+
+```json
+{
+  "mcpServers": {
+    "memory-bank": {
+      "command": "python",
+      "args": ["server.py"]
+    }
+  }
+}
+```
+
+## Usage Example
+
+Ask Cursor or any other AI code assistant with Memory Bank MCP:
+```
+Create memory bank for To Do list application with your tools
+```
+Provide more context to get better results.
 
 ## Available Tools
 
@@ -79,38 +123,3 @@ The Memory Bank consists of core files and optional context files, all in Markdo
 4. `systemPatterns.md` - System architecture, technical decisions, design patterns
 5. `techContext.md` - Technologies used, development setup, constraints
 6. `progress.md` - What works, what's left to build
-
-### Additional Context
-
-Create additional files/folders within memory-bank/ when they help organize:
-- Complex feature documentation
-- Integration specifications
-- API documentation
-- Testing strategies
-- Deployment procedures
-
-## Testing with MCP Inspector
-
-You can test the server using the MCP Inspector:
-
-```bash
-npx @modelcontextprotocol/inspector
-```
-
-Connect to your server:
-
-```
-> connect sse http://localhost:8080/sse
-```
-
-List available tools:
-
-```
-> list tools
-```
-
-Call a tool:
-
-```
-> call get_memory_bank_structure
-```
