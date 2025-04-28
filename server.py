@@ -1,4 +1,3 @@
-from typing import Any, Dict, List, Optional
 from mcp.server.fastmcp import FastMCP
 from starlette.applications import Starlette
 from starlette.responses import HTMLResponse
@@ -6,11 +5,9 @@ from mcp.server.sse import SseServerTransport
 from starlette.requests import Request
 from starlette.routing import Mount, Route
 from mcp.server import Server
-import uvicorn
-import json
 
 # Initialize FastMCP server with a name
-mcp = FastMCP("MemoryBankHelper")
+mcp = FastMCP("memory-bank-helper")
 
 # Templates for Memory Bank files
 TEMPLATES = {
@@ -426,18 +423,4 @@ def create_starlette_app(mcp_server: Server, *, debug: bool = False) -> Starlett
     )
 
 if __name__ == "__main__":
-    mcp_server = mcp._mcp_server
-    
-    import argparse
-    
-    # Parse command-line arguments
-    parser = argparse.ArgumentParser(description='Run Memory Bank Helper MCP Server')
-    parser.add_argument('--host', default='0.0.0.0', help='Host to bind to')
-    parser.add_argument('--port', type=int, default=8080, help='Port to listen on')
-    args = parser.parse_args()
-    
-    print(f"Starting Memory Bank Helper MCP Server on {args.host}:{args.port}")
-    
-    # Create and run Starlette app
-    starlette_app = create_starlette_app(mcp_server, debug=True)
-    uvicorn.run(starlette_app, host=args.host, port=args.port)
+    mcp.run()

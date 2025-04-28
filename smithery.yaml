@@ -1,10 +1,10 @@
 startCommand:
   type: stdio
   configSchema:
-    type: object
-    properties: {}
-  commandFunction: |
-    (config) => ({ 
-      command: 'python', 
-      args: ['server.py'] 
-    })
+    # JSON Schema defining the configuration options for the MCP.
+    {}
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({ command: 'python', args: ['-m', 'server'] })
+  exampleConfig: {}
