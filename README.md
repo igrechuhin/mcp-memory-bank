@@ -1,6 +1,6 @@
-[![smithery badge](https://smithery.ai/badge/@ipospelov/mcp-memory-bank)](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
+# Memory Bank MCP Server
 
-# Memory Bank
+[![smithery badge](https://smithery.ai/badge/@ipospelov/mcp-memory-bank)](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
 
 This MCP server provides a structured documentation system for context preservation in AI assistant environments.
 
@@ -16,7 +16,7 @@ Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill
 
 There are a few options to use this MCP server:
 
-### With Smithery
+### With [Smithery](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
 
 Add this to your mcp.json config file:
 
