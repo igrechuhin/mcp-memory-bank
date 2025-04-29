@@ -65,7 +65,7 @@ Add this to your mcp.json config file:
         "run",
         "-i",
         "--rm",
-        "mcp-memory-bank"
+        "19283744/mcp-memory-bank:latest"
       ]
     }
   }
