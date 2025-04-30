@@ -110,16 +110,15 @@ async def analyze_project_summary(project_summary: str) -> str:
    - Evolution of project decisions
 
 ## Files Location:
-1. If you are using Cursor IDE, create .mdc files in .cursor/rules directory
-2. If you are using another IDE, create .md files in directory for rules
-3. If you don't know where rules must be located, create a 'memory-bank/' directory in your project
+All files must be located in the 'memory-bank/' directory
 
 ## Next Steps:
-1. Fetch and create memory_bank_instructions.md file as is without any edits 
-2. Create the core files using our templates
-3. Fill in the details based on these suggestions
-4. Update regularly as your project evolves
-5. Ensure details accurately reflect your project context and current state"""
+1. Create 'memory-bank/' directory
+2. Fetch and create 'memory_bank_instructions.md' file as is without any edits 
+3. Create the core files using our templates
+4. Fill in the details based on these suggestions
+5. Update regularly as your project evolves
+6. Ensure details accurately reflect your project context and current state"""
 
 # Add a resource for Memory Bank guide
 @mcp.resource("memory_bank_guide://{section}")
