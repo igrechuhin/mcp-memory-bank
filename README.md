@@ -16,6 +16,25 @@ Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill
 
 There are a few options to use this MCP server:
 
+### With UVX
+
+Add this to your mcp.json config file:
+
+```json
+{
+  "mcpServers": {
+    "mcp-memory-bank": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/ipospelov/mcp-memory-bank",
+        "mcp_memory_bank"
+      ]
+    }
+  }
+}
+```
+
 ### With [Smithery](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
 
 Add this to your mcp.json config file:
