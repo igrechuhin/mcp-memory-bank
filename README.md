@@ -79,7 +79,7 @@ Add this to your mcp.json config file:
 
 ### Manually
 
-Run the following commands:
+Clone repository and run the following commands:
 
 ```bash
 python -m venv venv
@@ -94,7 +94,7 @@ Then add this to your mcp.json config file:
   "mcpServers": {
     "memory-bank": {
       "command": "python",
-      "args": ["server.py"]
+      "args": ["src/mcp_memory_bank/main.py"]
     }
   }
 }
