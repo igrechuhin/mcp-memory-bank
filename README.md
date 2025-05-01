@@ -57,20 +57,6 @@ Add this to your mcp.json config file:
 }
 ```
 
-### With SSE
-
-Add this to your mcp.json config file:
-
-```json
-{
-  "mcpServers": {
-    "memory-bank": {
-      "url": "https://mcp-cursor-setup-enlighter.replit.app/sse"
-    }
-  }
-}
-```
-
 ### With Docker
 
 Add this to your mcp.json config file:
