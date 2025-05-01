@@ -1,17 +1,17 @@
 from mcp.server.fastmcp import FastMCP
 
-from templates.memory_bank_instructions import TEMPLATE as MEMORY_BANK_INSTRUCTIONS_TEMPLATE
-from templates.projectbrief import TEMPLATE as PROJECTBRIEF_TEMPLATE
-from templates.product_context import TEMPLATE as PRODUCT_CONTEXT_TEMPLATE
-from templates.active_context import TEMPLATE as ACTIVE_CONTEXT_TEMPLATE
-from templates.system_patterns import TEMPLATE as SYSTEM_PATTERNS_TEMPLATE
-from templates.tech_context import TEMPLATE as TECH_CONTEXT_TEMPLATE
-from templates.progress import TEMPLATE as PROGRESS_TEMPLATE
+from mcp_memory_bank.templates.memory_bank_instructions import TEMPLATE as MEMORY_BANK_INSTRUCTIONS_TEMPLATE
+from mcp_memory_bank.templates.projectbrief import TEMPLATE as PROJECTBRIEF_TEMPLATE
+from mcp_memory_bank.templates.product_context import TEMPLATE as PRODUCT_CONTEXT_TEMPLATE
+from mcp_memory_bank.templates.active_context import TEMPLATE as ACTIVE_CONTEXT_TEMPLATE
+from mcp_memory_bank.templates.system_patterns import TEMPLATE as SYSTEM_PATTERNS_TEMPLATE
+from mcp_memory_bank.templates.tech_context import TEMPLATE as TECH_CONTEXT_TEMPLATE
+from mcp_memory_bank.templates.progress import TEMPLATE as PROGRESS_TEMPLATE
 
-from guides.setup import GUIDE as SETUP_GUIDE
-from guides.usage import GUIDE as USAGE_GUIDE
-from guides.benefits import GUIDE as BENEFITS_GUIDE
-from guides.structure import GUIDE as STRUCTURE_GUIDE
+from mcp_memory_bank.guides.setup import GUIDE as SETUP_GUIDE
+from mcp_memory_bank.guides.usage import GUIDE as USAGE_GUIDE
+from mcp_memory_bank.guides.benefits import GUIDE as BENEFITS_GUIDE
+from mcp_memory_bank.guides.structure import GUIDE as STRUCTURE_GUIDE
 
 mcp = FastMCP("memory-bank-helper")
 
