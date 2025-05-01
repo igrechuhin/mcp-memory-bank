@@ -135,5 +135,9 @@ async def memory_bank_guide(section: str) -> tuple[str, str]:
         available_guides = ", ".join(GUIDES.keys())
         return f"Guide for {section} not found. Available guides: {available_guides}", "text/plain"
 
+def main():
+    """Entry point for the application when run with uvx."""
+    mcp.run(transport='stdio')
+
 if __name__ == "__main__":
-    mcp.run()
+    main()
