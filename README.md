@@ -6,6 +6,10 @@ This MCP server provides a structured documentation system for context preservat
 
 Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill.org)
 
+<a href="https://glama.ai/mcp/servers/@ipospelov/mcp-memory-bank">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@ipospelov/mcp-memory-bank/badge" alt="Memory Bank Server MCP server" />
+</a>
+
 ## Features
 
 - Get detailed information about Memory Bank structure
