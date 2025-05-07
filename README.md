@@ -1,8 +1,9 @@
 # Memory Bank MCP Server
 
-This MCP server provides a structured documentation system for context preservation in AI assistant environments.
+This MCP server helps to build structured documentation system based on [Cline's Memory Bank pattern](https://docs.cline.bot/improving-your-prompting-skills/cline-memory-bank) for context preservation in AI assistant environments. 
 
-Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill.org). 
+Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill.org).
+
 Learn how to setup and use Memory Bank directly in Cursor: http://enlightby.ai/projects/37
 
 [![smithery badge](https://smithery.ai/badge/@ipospelov/mcp-memory-bank)](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
