@@ -1,10 +1,11 @@
 # Memory Bank MCP Server
 
-[![smithery badge](https://smithery.ai/badge/@ipospelov/mcp-memory-bank)](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
-
 This MCP server provides a structured documentation system for context preservation in AI assistant environments.
 
-Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill.org)
+Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill.org). 
+Learn how to setup and use Memory Bank directly in Cursor: http://enlightby.ai/projects/37
+
+[![smithery badge](https://smithery.ai/badge/@ipospelov/mcp-memory-bank)](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
 
 <a href="https://glama.ai/mcp/servers/@ipospelov/mcp-memory-bank">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@ipospelov/mcp-memory-bank/badge" alt="Memory Bank Server MCP server" />
