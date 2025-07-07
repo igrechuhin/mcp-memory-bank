@@ -16,7 +16,7 @@ from mcp_memory_bank.guides.structure import GUIDE as STRUCTURE_GUIDE
 mcp = FastMCP("memory-bank-helper")
 
 TEMPLATES = {
-    "memory_bank_instructions.md": MEMORY_BANK_INSTRUCTIONS_TEMPLATE,
+    "memorybankinstructions.md": MEMORY_BANK_INSTRUCTIONS_TEMPLATE,
     "projectbrief.md": PROJECTBRIEF_TEMPLATE,
     "productContext.md": PRODUCT_CONTEXT_TEMPLATE,
     "activeContext.md": ACTIVE_CONTEXT_TEMPLATE,
@@ -64,7 +64,7 @@ async def analyze_project_summary(project_summary: str) -> str:
     return f"""Based on your project summary, here are suggestions for your Memory Bank:
 
 ### Core Files (Required)
-1. `memory_bank_instructions.md`
+1. `memorybankinstructions.md`
     - Instructions for the Memory Bank
     - Describes how to use the Memory Bank
     
@@ -114,7 +114,7 @@ All files must be located in the 'memory-bank/' directory
 
 ## Next Steps:
 1. Create 'memory-bank/' directory
-2. Fetch and create 'memory_bank_instructions.md' file as is without any edits 
+2. Fetch and create 'memorybankinstructions.md' file as is without any edits 
 3. Create the core files using our templates
 4. Fill in the details based on these suggestions
 5. Update regularly as your project evolves

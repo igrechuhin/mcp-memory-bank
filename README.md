@@ -6,10 +6,10 @@ Powered by [Enlighter](https://enlightby.ai) and [Hyperskill](https://hyperskill
 
 Learn how to setup and use Memory Bank directly in Cursor: http://enlightby.ai/projects/37
 
-[![smithery badge](https://smithery.ai/badge/@ipospelov/mcp-memory-bank)](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
+[![smithery badge](https://smithery.ai/badge/@igrechuhin/mcp-memory-bank)](https://smithery.ai/server/@igrechuhin/mcp-memory-bank)
 
-<a href="https://glama.ai/mcp/servers/@ipospelov/mcp-memory-bank">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@ipospelov/mcp-memory-bank/badge" alt="Memory Bank Server MCP server" />
+<a href="https://glama.ai/mcp/servers/@igrechuhin/mcp-memory-bank">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@igrechuhin/mcp-memory-bank/badge" alt="Memory Bank Server MCP server" />
 </a>
 
 ## Features
@@ -33,7 +33,7 @@ Add this to your mcp.json config file:
       "command": "uvx",
       "args": [
         "--from",
-        "git+https://github.com/ipospelov/mcp-memory-bank",
+        "git+https://github.com/igrechuhin/mcp-memory-bank",
         "mcp_memory_bank"
       ]
     }
@@ -41,7 +41,7 @@ Add this to your mcp.json config file:
 }
 ```
 
-### With [Smithery](https://smithery.ai/server/@ipospelov/mcp-memory-bank)
+### With [Smithery](https://smithery.ai/server/@igrechuhin/mcp-memory-bank)
 
 Add this to your mcp.json config file:
 
@@ -54,7 +54,7 @@ Add this to your mcp.json config file:
         "-y",
         "@smithery/cli@latest",
         "run",
-        "@ipospelov/mcp-memory-bank",
+        "@igrechuhin/mcp-memory-bank",
         "--key",
         "your_smithery_key"
       ]
@@ -154,4 +154,4 @@ The Memory Bank consists of core files and optional context files, all in Markdo
 4. `systemPatterns.md` - System architecture, technical decisions, design patterns
 5. `techContext.md` - Technologies used, development setup, constraints
 6. `progress.md` - What works, what's left to build
-7. `memory_bank_instructions.md` - How to work with Memory Bank, instructtions for AI-agent
+7. `memorybankinstructions.md` - How to work with Memory Bank, instructions for AI-agent
