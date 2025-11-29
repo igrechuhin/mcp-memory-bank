@@ -12,6 +12,7 @@ The Memory Bank consists of core files, all in Markdown format:
 5. 'systemPatterns.md' - System architecture, technical decisions, design patterns
 6. 'techContext.md' - Technologies used, development setup, constraints
 7. 'progress.md' - What works, what's left to build
+8. 'roadmap.md' - Vision & scope, development priorities, milestones, component roadmap
 
-Make sure to create all 7 files.
+Make sure to create all 8 files.
 """ 

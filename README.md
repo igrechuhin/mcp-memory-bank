@@ -155,3 +155,4 @@ The Memory Bank consists of core files and optional context files, all in Markdo
 5. `techContext.md` - Technologies used, development setup, constraints
 6. `progress.md` - What works, what's left to build
 7. `memorybankinstructions.md` - How to work with Memory Bank, instructions for AI-agent
+8. `roadmap.md` - Vision & scope, development priorities, milestones, component roadmap

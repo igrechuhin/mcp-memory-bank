@@ -12,10 +12,12 @@ flowchart TD
     PB[projectbrief.md] --> PC[productContext.md]
     PB --> SP[systemPatterns.md]
     PB --> TC[techContext.md]
+    PB --> RM[roadmap.md]
     
     PC --> AC[activeContext.md]
     SP --> AC
     TC --> AC
+    RM --> AC
     
     AC --> P[progress.md]
 
@@ -60,6 +62,16 @@ flowchart TD
    - Current status
    - Known issues
    - Evolution of project decisions
+
+7. `roadmap.md`
+   - Vision & scope
+   - Development priority principles
+   - Current focus and milestones
+   - Component roadmap
+   - Performance goals
+   - History of major milestones
+   - Immediate next steps
+   - Plan references
 
 ## Core Workflows
 

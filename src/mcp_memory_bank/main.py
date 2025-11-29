@@ -7,6 +7,7 @@ from mcp_memory_bank.templates.active_context import TEMPLATE as ACTIVE_CONTEXT_
 from mcp_memory_bank.templates.system_patterns import TEMPLATE as SYSTEM_PATTERNS_TEMPLATE
 from mcp_memory_bank.templates.tech_context import TEMPLATE as TECH_CONTEXT_TEMPLATE
 from mcp_memory_bank.templates.progress import TEMPLATE as PROGRESS_TEMPLATE
+from mcp_memory_bank.templates.roadmap import TEMPLATE as ROADMAP_TEMPLATE
 
 from mcp_memory_bank.guides.setup import GUIDE as SETUP_GUIDE
 from mcp_memory_bank.guides.usage import GUIDE as USAGE_GUIDE
@@ -22,7 +23,8 @@ TEMPLATES = {
     "activeContext.md": ACTIVE_CONTEXT_TEMPLATE,
     "systemPatterns.md": SYSTEM_PATTERNS_TEMPLATE,
     "techContext.md": TECH_CONTEXT_TEMPLATE,
-    "progress.md": PROGRESS_TEMPLATE
+    "progress.md": PROGRESS_TEMPLATE,
+    "roadmap.md": ROADMAP_TEMPLATE
 }
 
 GUIDES = {
@@ -109,11 +111,21 @@ async def analyze_project_summary(project_summary: str) -> str:
    - Known issues
    - Evolution of project decisions
 
+8. `roadmap.md`
+   - Vision & scope
+   - Development priority principles
+   - Current focus and milestones
+   - Component roadmap
+   - Performance goals
+   - History of major milestones
+   - Immediate next steps
+   - Plan references
+
 ## Files Location:
-All files must be located in the 'memory-bank/' directory
+All files must be located in the '.cursor/memory-bank/' directory
 
 ## Next Steps:
-1. Create 'memory-bank/' directory
+1. Create '.cursor/memory-bank/' directory
 2. Fetch and create 'memorybankinstructions.md' file as is without any edits 
 3. Create the core files using our templates
 4. Fill in the details based on these suggestions
